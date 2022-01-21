@@ -13,7 +13,7 @@ This program is a simple **machine learning implementation in Java** for detecti
 
 ## How it works?
 ```
-We have used naive Bayes here for classification (skin or non-skin pixel). As it is a colour image there are 256*256*256 types of pixels.
+We have used Naive Bayes here for classification (skin or non-skin pixel). As it is a colour image there are 256*256*256 types of pixels.
 
 In the training function, pixel frequencies of being skin or non-skin is calculated. 
 We take every pixel of the image and see if it is a pixel of skin by using the mask 
