@@ -11,7 +11,7 @@ This program is a simple **machine learning implementation in Java** for detecti
 3. The output folder contains the result pictures.
 ```
 
-##How it works?
+## How it works?
 ```
 We have used naive Bayes here for classification (skin or non-skin pixel). As it is a colour image there are 256*256*256 types of pixels.
 
