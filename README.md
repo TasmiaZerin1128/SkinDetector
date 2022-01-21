@@ -27,7 +27,7 @@ During testing, we simply map each pixel with the probability we calculated in t
 If the probability is greater than a certain threshold, we mark that pixel as skin.
 ```
 
-##Sample Test and Result Image
+## Sample Test and Result Image
 ![Test Image](https://github.com/TasmiaZerin1128/SkinDetector/blob/master/src/testImages/robert-downey.jpg)
 ![Result Image](https://github.com/TasmiaZerin1128/SkinDetector/blob/master/src/output/robert-downey.jpg)
 
