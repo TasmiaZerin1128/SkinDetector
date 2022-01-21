@@ -28,7 +28,7 @@ If the probability is greater than a certain threshold, we mark that pixel as sk
 ```
 
 ## Sample Test and Result Image
-Solarized dark             |  Solarized Ocean
+Test Image             |  Result Image
 :-------------------------:|:-------------------------:
 ![Test Image](https://github.com/TasmiaZerin1128/SkinDetector/blob/master/src/testImages/robert-downey.jpg) | ![Result Image](https://github.com/TasmiaZerin1128/SkinDetector/blob/master/src/output/robert-downey.jpg)
 
