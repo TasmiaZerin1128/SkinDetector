@@ -32,3 +32,5 @@ Test Image             |  Result Image
 :-------------------------:|:-------------------------:
 ![Test Image](https://github.com/TasmiaZerin1128/SkinDetector/blob/master/src/testImages/robert-downey.jpg) | ![Result Image](https://github.com/TasmiaZerin1128/SkinDetector/blob/master/src/output/robert-downey.jpg)
 
+#### Took Help From
+https://github.com/MinhasKamal/SkinDetector#dancer-skin-detector 
