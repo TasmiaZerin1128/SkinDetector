@@ -1,4 +1,4 @@
-# Skin Detector
+# Skin Detector 👨 👩
 
 ### Detects human skin from images
 This program is a simple **machine learning implementation in Java** for detecting skin pixels.
