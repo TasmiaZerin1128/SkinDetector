@@ -19,20 +19,20 @@ public class SkinDetectorTrainer {
 
     }
 
-    void Train(String MaskPath, String ImagePath) throws IOException {
+    void Train(String MaskPath, String ImagePath, int data) throws IOException {
         File fileM = new File(MaskPath);
         File fileI = new File(ImagePath);
         BufferedImage imgM = ImageIO.read(fileM);
         BufferedImage imgI = ImageIO.read(fileI);
         for (int y = 0; y < imgI.getHeight(); y++) {
             for (int x = 0; x < imgI.getWidth(); x++) {
-                getSkinNonSkin(x, y, imgM, imgI);
+                getSkinNonSkin(x, y, imgM, imgI,data);
             }
         }
     }
 
 
-    void getSkinNonSkin(int width, int height, BufferedImage imgMask, BufferedImage imgImage) {
+    void getSkinNonSkin(int width, int height, BufferedImage imgMask, BufferedImage imgImage, int data) {
         int pixelM = imgMask.getRGB(width, height);
         //System.out.println("pixel " + pixelM);
         Color color = new Color(pixelM, true);
@@ -47,18 +47,26 @@ public class SkinDetectorTrainer {
         int greenI = colorI.getGreen();
         int blueI = colorI.getBlue();
 
-        if (doesShowSkin(redM, greenM, blueM)) {
+        if (doesShowSkin(redM, greenM, blueM,data)) {
             skinPixel[redI][greenI][blueI]++;
         } else {
             nonskinPixel[redI][greenI][blueI]++;
         }
     }
 
-    boolean doesShowSkin(int R, int G, int B) {
-        if (R > 250 && G > 250 && B > 250) {
-            return true;   // for database train, return true
-        } else {
-            return false;
+    boolean doesShowSkin(int R, int G, int B, int data) {
+        if(data==1) {
+            if (R > 250 && G > 250 && B > 250) {
+                return true;   // for database train, return true
+            } else {
+                return false;
+            }
+        } else{
+            if (R > 250 && G > 250 && B > 250) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 
@@ -98,7 +106,7 @@ public class SkinDetectorTrainer {
     public static void main(String[] args) throws IOException {
 
         String imagePath = "src/ibtd/";
-        String name = "robert-downey.jpg";
+        String name = "onaN.jpeg";
         String image = "src/testImages/" + name;  //test Image path
         String maskPath = "src/ibtd/Mask/";
         SkinDetectorTrainer st = new SkinDetectorTrainer();
@@ -113,15 +121,15 @@ public class SkinDetectorTrainer {
             for (int i = 1; i < 87; i++) {
                 String imageFile = "src/dataset/image/image (" + i + ").jpg";       //these 2 lines for database input
                 String maskFile = "src/dataset/mask/mask (" + i + ").png";
-                st.Train(maskFile, imageFile);
+                st.Train(maskFile, imageFile,data);
                 System.out.println("Image Processed: " + i);    //notification
             }
         } else {
-            for (int i = 0; i < 200; i++)  // for database, i=1; i<87
+            for (int i = 0; i < 400; i++)
             {
                 String maskFile = maskPath + String.format("%04d", i) + ".bmp";
                 String imageFile = imagePath + String.format("%04d", i) + ".jpg";
-                st.Train(maskFile, imageFile);
+                st.Train(maskFile, imageFile,data);
                 System.out.println("Image Processed: " + i);    //notification
             }
         }
@@ -133,7 +141,7 @@ public class SkinDetectorTrainer {
         if (data == 1) {
             SkinDetectorOutput sdO = new SkinDetectorOutput(image, name, st.getRatio(), 0.25, input);
         } else {
-            SkinDetectorOutput sdO = new SkinDetectorOutput(image, name, st.getRatio(), 0.15, input);
+            SkinDetectorOutput sdO = new SkinDetectorOutput(image, name, st.getRatio(), 0.20, input);
         }
         System.out.println("Image Processed");
     }

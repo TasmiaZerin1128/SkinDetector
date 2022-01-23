@@ -16,7 +16,7 @@ public class SkinDetectorOutput {
         BufferedImage imgO = ImageIO.read(fileO);
         for (int y = 0; y < imgO.getHeight(); y++) {
             for (int x = 0; x < imgO.getWidth(); x++) {
-                editPixels(x,y,imgO,ratio, threshold,input);
+                editPixels(x,y,imgO,ratio,threshold,input);
             }
         }
         ImageIO.write(imgO,"jpg",new File("src/output/"+ImageName));
@@ -32,8 +32,8 @@ public class SkinDetectorOutput {
         {
             if(input==1) {
                 color = new Color(255, 255, 255); // make WHITE
+                imgMask.setRGB(width,height,color.getRGB());
             }
-            imgMask.setRGB(width,height,color.getRGB());
         }
         else
         {
